@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 943dcba61429f3046a077eb4009ca2e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacleSpeed: 2
+  obstacleSpeed: 5
   yVariation: 1.5
 --- !u!50 &-3512965302990293327
 Rigidbody2D:
@@ -132,6 +132,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorBottom
       objectReference: {fileID: 0}
+    - target: {fileID: 3484104274764060961, guid: db3e2797901dee649b4308317e2f7ec6, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -204,6 +208,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9003777631935486166}
     m_Modifications:
+    - target: {fileID: 1408352990040547715, guid: 04f8c838a6d2a51488b49baac9f7dd0d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7651530489318030069, guid: 04f8c838a6d2a51488b49baac9f7dd0d, type: 3}
       propertyPath: m_Name
       value: DoorTop
