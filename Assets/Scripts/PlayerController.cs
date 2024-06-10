@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Director director_controller;
     private Vector3 initialPosition;
+    private bool canGoUp;
 
     [SerializeField] public float jumpForce;
 
@@ -20,8 +21,17 @@ public class PlayerController : MonoBehaviour
     void Update(){
         if (Input.GetButtonDown("Fire1"))
         {
-            GoUp(jumpForce);
+            canGoUp = true;
         } 
+    }
+
+    private void FixedUpdate()
+    {
+        if (canGoUp)
+        {
+            GoUp(jumpForce);
+            canGoUp = false;
+        }
     }
 
     void GoUp(float jumpForce){

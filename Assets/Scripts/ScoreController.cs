@@ -28,4 +28,12 @@ public class ScoreController : MonoBehaviour
         textScore.text = "0";
         score = 0;
     }
+
+    public void StoreScore()
+    {
+        int currentBestScore = PlayerPrefs.GetInt("bestScore");
+        if(score > currentBestScore){
+            PlayerPrefs.SetInt("bestScore", score);
+        }
+    }
 }
