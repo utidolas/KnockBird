@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
     
     private Rigidbody2D rb;
-    private Director director_controller;
+    [SerializeField] UnityEvent whenCollide;
     private Animator anim;
     private Vector3 initialPosition;
     private bool canGoUp;
@@ -18,7 +19,6 @@ public class PlayerController : MonoBehaviour
         initialPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        director_controller = FindFirstObjectByType<Director>();
     }
     void Update(){
         anim.SetFloat("yVelocity", rb.velocity.y);
@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision){
         rb.simulated = false;
-        director_controller.EndGame();  
+        whenCollide.Invoke();  
     }
 
     public void Restart()

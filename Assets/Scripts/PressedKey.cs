@@ -2,23 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PressedKey : MonoBehaviour
 {
-    private PlayerController player_controller;
+    [SerializeField] private UnityEvent whenKeyPressed;
 
     [SerializeField] private KeyCode keyPlayerJump;
-    private void Start()
-    {
-        player_controller = GetComponent<PlayerController>();
-    }
 
    
     private void Update()
     {
         if (Input.GetKeyDown(keyPlayerJump))
         {
-            player_controller.GoUpKey();
+            whenKeyPressed.Invoke();
         }
     }
 }
