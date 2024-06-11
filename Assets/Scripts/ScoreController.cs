@@ -9,7 +9,7 @@ public class ScoreController : MonoBehaviour
 {
     [SerializeField] public TextMeshProUGUI textScore;
     private AudioSource audio_score;
-    private int score;
+    public int Score { get; private set; }
 
     private void Start()
     {
@@ -18,22 +18,22 @@ public class ScoreController : MonoBehaviour
 
     public void AddScore()
     {
-        score++;
+        Score++;
         audio_score.Play();
-        textScore.text = string.Format("{0}", score);
+        textScore.text = string.Format("{0}", Score);
     }
 
     public void ResetScore()
     {
         textScore.text = "0";
-        score = 0;
+        Score = 0;
     }
 
     public void StoreScore()
     {
         int currentBestScore = PlayerPrefs.GetInt("bestScore");
-        if(score > currentBestScore){
-            PlayerPrefs.SetInt("bestScore", score);
+        if(Score > currentBestScore){
+            PlayerPrefs.SetInt("bestScore", Score);
         }
     }
 }

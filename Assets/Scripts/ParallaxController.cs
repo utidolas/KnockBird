@@ -6,26 +6,19 @@ using UnityEngine.UIElements;
 
 public class ParallaxController : MonoBehaviour
 {
-    [SerializeField] public float speed;
-    private Vector3 initialPos;
-    private SpriteRenderer spr;
+    [Range(-2f, 2f)] public float scrollSpeed = 0.5f;
+    private float offset;
+    private Material mat;
 
-    private float realImageSize;
     void Start()
     {
-        initialPos = transform.position;
-        spr = GetComponent<SpriteRenderer>();
-
-        //compute image size to repeat
-        float imageSize = spr.size.x;
-        realImageSize = imageSize * transform.localScale.x;  
-
+        mat = GetComponent<Renderer>().material;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float shifting = Mathf.Repeat(speed * Time.time, realImageSize);
-        transform.position = initialPos + Vector3.left * shifting;
+        offset += (Time.deltaTime * scrollSpeed) / 10f;
+        mat.SetTextureOffset("_MainTex", new Vector2(offset, 0));
     }
 }

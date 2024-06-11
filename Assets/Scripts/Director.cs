@@ -5,15 +5,17 @@ using UnityEngine;
 public class Director : MonoBehaviour
 {
 
-    [SerializeField] public PlayerController player_controller;
-    [SerializeField] public ScoreController score_controller;
+    private PlayerController player_controller;
+    private ScoreController score_controller;
     private InterfaceScript interface_controller;
+    private DifficultController difficult_controller;
 
     private void Start()
     {
         player_controller = GameObject.FindFirstObjectByType<PlayerController>();
         score_controller = GameObject.FindFirstObjectByType<ScoreController>();
         interface_controller = GameObject.FindFirstObjectByType<InterfaceScript>();
+        difficult_controller = GameObject.FindFirstObjectByType<DifficultController>();
     }
 
     public void EndGame() {
@@ -29,7 +31,7 @@ public class Director : MonoBehaviour
         player_controller.Restart();
         score_controller.ResetScore();
         DestroyObstacles();
-
+        difficult_controller.Restart();
     }
 
     public void DestroyObstacles()

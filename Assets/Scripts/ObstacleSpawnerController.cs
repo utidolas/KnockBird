@@ -5,12 +5,16 @@ using UnityEngine;
 public class ObstacleSpawnerController : MonoBehaviour
 {
     [SerializeField] public GameObject obstacle;
-    [SerializeField] public float timeToGenObstacle;
+    [SerializeField] public float timeToGenObstacleEasy;
+    [SerializeField] public float timeToGenObstacleHard;
     private float counter;
+
+    private DifficultController difficult_controller;
 
     void Start()
     {
-        counter = timeToGenObstacle;
+        counter = timeToGenObstacleEasy;
+        difficult_controller = FindFirstObjectByType<DifficultController>();
     }
 
     void Update()
@@ -19,7 +23,7 @@ public class ObstacleSpawnerController : MonoBehaviour
 
         if(counter < 0){
             GameObject.Instantiate(obstacle, transform.position, Quaternion.identity);
-            counter = timeToGenObstacle;
+            counter = Mathf.Lerp(timeToGenObstacleEasy, timeToGenObstacleHard, difficult_controller.Difficulty); 
         }
     }
 }

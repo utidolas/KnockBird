@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     
     private Rigidbody2D rb;
     private Director director_controller;
+    private Animator anim;
     private Vector3 initialPosition;
     private bool canGoUp;
 
@@ -16,13 +17,11 @@ public class PlayerController : MonoBehaviour
     void Start(){
         initialPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         director_controller = FindFirstObjectByType<Director>();
     }
     void Update(){
-        if (Input.GetButtonDown("Fire1"))
-        {
-            canGoUp = true;
-        } 
+        anim.SetFloat("yVelocity", rb.velocity.y);
     }
 
     private void FixedUpdate()
@@ -33,8 +32,12 @@ public class PlayerController : MonoBehaviour
             canGoUp = false;
         }
     }
+    public void GoUpKey()
+    {
+        canGoUp = true;
+    }
 
-    void GoUp(float jumpForce){
+    public void GoUp(float jumpForce){
         rb.velocity = Vector2.zero;
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
