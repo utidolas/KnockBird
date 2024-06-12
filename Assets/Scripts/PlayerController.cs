@@ -9,9 +9,14 @@ public class PlayerController : MonoBehaviour
     
     private Rigidbody2D rb;
     [SerializeField] UnityEvent whenCollide;
+    [SerializeField] UnityEvent whenPassObstacle;
+    private BotScript bot_controller;
+    public StatusScript status_controller;
+    private PressedKey pressedKey_controller;
     private Animator anim;
     private Vector3 initialPosition;
     private bool canGoUp;
+    
 
     [SerializeField] public float jumpForce;
 
@@ -19,9 +24,14 @@ public class PlayerController : MonoBehaviour
         initialPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        pressedKey_controller = GetComponent<PressedKey>();
+        status_controller = GetComponent<StatusScript>();
+        bot_controller = FindFirstObjectByType<BotScript>();
     }
     void Update(){
         anim.SetFloat("yVelocity", rb.velocity.y);
+
+        //Debug.Log(string.Format("Player: {0} / Bot: {1}", status_controller.isAlive, bot_controller.status_controller.isAlive));
     }
 
     private void FixedUpdate()
@@ -32,7 +42,7 @@ public class PlayerController : MonoBehaviour
             canGoUp = false;
         }
     }
-    public void GoUpKey()
+    public void DoGoUp()
     {
         canGoUp = true;
     }
@@ -44,12 +54,24 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision){
         rb.simulated = false;
-        whenCollide.Invoke();  
+        status_controller.isAlive = false;
+        pressedKey_controller.enabled = false;
+        if (!status_controller.isAlive && !bot_controller.status_controller.isAlive)
+        {
+            whenCollide.Invoke();  
+        }
     }
 
     public void Restart()
     {
         rb.simulated = true;
+        pressedKey_controller.enabled = true;
+        status_controller.isAlive = true;
         transform.position = initialPosition;
+    }
+
+    public void OnTriggerEnter2D()
+    {
+        whenPassObstacle.Invoke();
     }
 }

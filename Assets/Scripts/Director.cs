@@ -9,6 +9,7 @@ public class Director : MonoBehaviour
     private ScoreController score_controller;
     private InterfaceScript interface_controller;
     private DifficultController difficult_controller;
+    private BotScript bot_controller;
 
     private void Start()
     {
@@ -16,6 +17,7 @@ public class Director : MonoBehaviour
         score_controller = GameObject.FindFirstObjectByType<ScoreController>();
         interface_controller = GameObject.FindFirstObjectByType<InterfaceScript>();
         difficult_controller = GameObject.FindFirstObjectByType<DifficultController>();
+        bot_controller = GameObject.FindFirstObjectByType<BotScript>();
     }
 
     public void EndGame() {
@@ -29,6 +31,7 @@ public class Director : MonoBehaviour
         Time.timeScale = 1;
         interface_controller.HideInterface();
         player_controller.Restart();
+        bot_controller.Restart();
         score_controller.ResetScore();
         DestroyObstacles();
         difficult_controller.Restart();

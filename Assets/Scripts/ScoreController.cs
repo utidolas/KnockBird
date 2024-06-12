@@ -8,8 +8,11 @@ using UnityEngine.UI;
 public class ScoreController : MonoBehaviour
 {
     [SerializeField] public TextMeshProUGUI textScore;
+    [SerializeField] public TextMeshProUGUI textScoreCoop;
+
     private AudioSource audio_score;
     public int Score { get; private set; }
+    public int ScoreCoop { get; private set; }
 
     private void Start()
     {
@@ -23,10 +26,19 @@ public class ScoreController : MonoBehaviour
         textScore.text = string.Format("{0}", Score);
     }
 
+    public void AddScoreCoop()
+    {
+        ScoreCoop++;
+        audio_score.Play();
+        textScoreCoop.text = string.Format("{0}", ScoreCoop);
+    }
+
     public void ResetScore()
     {
         textScore.text = "0";
+        textScoreCoop.text = "0";
         Score = 0;
+        ScoreCoop = 0;
     }
 
     public void StoreScore()

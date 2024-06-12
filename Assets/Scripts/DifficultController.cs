@@ -17,7 +17,6 @@ public class DifficultController : MonoBehaviour
         timeElapsed += Time.deltaTime;
         Difficulty = timeElapsed / timeToMaxDifficult;
         Difficulty = Mathf.Min(1, Difficulty);
-        Debug.Log(Difficulty);
     }
 
     public void Restart()

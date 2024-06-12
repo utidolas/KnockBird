@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9003777631935486166}
   - component: {fileID: 5677752134493668050}
   - component: {fileID: -3512965302990293327}
+  - component: {fileID: 1271637168255531134}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
@@ -76,6 +77,52 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &1271637168255531134
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3748341064855899854}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 1.4390507, y: 0.07994747}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.9360428, y: 4.229867}
+  m_EdgeRadius: 0
 --- !u!1001 &1505867001558753481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -90,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 328845015616650496, guid: db3e2797901dee649b4308317e2f7ec6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.2
+      value: -5.5
       objectReference: {fileID: 0}
     - target: {fileID: 328845015616650496, guid: db3e2797901dee649b4308317e2f7ec6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -156,7 +203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7737261926725510979, guid: 04f8c838a6d2a51488b49baac9f7dd0d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.2
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 7737261926725510979, guid: 04f8c838a6d2a51488b49baac9f7dd0d, type: 3}
       propertyPath: m_LocalPosition.z
