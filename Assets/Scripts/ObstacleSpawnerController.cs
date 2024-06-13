@@ -10,6 +10,7 @@ public class ObstacleSpawnerController : MonoBehaviour
     private float counter;
 
     private DifficultController difficult_controller;
+    private bool isStopped;
 
     void Start()
     {
@@ -19,11 +20,21 @@ public class ObstacleSpawnerController : MonoBehaviour
 
     void Update()
     {
+        if (isStopped)
+        {
+            return;
+        }
+
         counter -= Time.deltaTime;
 
         if(counter < 0){
             GameObject.Instantiate(obstacle, transform.position, Quaternion.identity);
             counter = Mathf.Lerp(timeToGenObstacleEasy, timeToGenObstacleHard, difficult_controller.Difficulty); 
         }
+    }
+
+    public void StopGen()
+    {
+        isStopped = true;
     }
 }

@@ -7,7 +7,8 @@ using UnityEngine.Events;
 public class BotScript : MonoBehaviour
 {
     [SerializeField] UnityEvent whenPassObstacle;
-    [SerializeField] UnityEvent whenCollide;
+    [SerializeField] UnityEvent whenGameOver;
+    [SerializeField] UnityEvent whenFailObstacle;
 
     private Animator anim;
     public StatusScript status_controller;
@@ -79,9 +80,10 @@ public class BotScript : MonoBehaviour
     {
         rb.simulated = false;
         status_controller.isAlive = false;
+        whenFailObstacle.Invoke();
         if (!status_controller.isAlive && !player_controller.status_controller.isAlive)
         {
-            whenCollide.Invoke();
+            whenGameOver.Invoke();
         }
     }
 

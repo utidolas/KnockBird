@@ -8,8 +8,9 @@ public class PlayerController : MonoBehaviour
 {
     
     private Rigidbody2D rb;
-    [SerializeField] UnityEvent whenCollide;
+    [SerializeField] UnityEvent whenGameOver;
     [SerializeField] UnityEvent whenPassObstacle;
+    [SerializeField] UnityEvent whenFailObstacle;
     private BotScript bot_controller;
     public StatusScript status_controller;
     private PressedKey pressedKey_controller;
@@ -53,12 +54,13 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision){
+        whenFailObstacle.Invoke();
         rb.simulated = false;
         status_controller.isAlive = false;
         pressedKey_controller.enabled = false;
         if (!status_controller.isAlive && !bot_controller.status_controller.isAlive)
         {
-            whenCollide.Invoke();  
+            whenGameOver.Invoke();  
         }
     }
 
