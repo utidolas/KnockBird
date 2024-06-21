@@ -26,7 +26,7 @@ public class BotScript : MonoBehaviour
         status_controller = GetComponent<StatusScript>();
         rb = GetComponent<Rigidbody2D>();
         player_controller = FindFirstObjectByType<PlayerController>();
-        StartCoroutine(Boost());
+        /*StartCoroutine(Boost());*/
     }
 
     void Update()
@@ -51,11 +51,12 @@ public class BotScript : MonoBehaviour
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
-    private void DoGoUp()
+    public void DoGoUp()
     {
         canGoUp = true;
     }
 
+    /*
     private IEnumerator Boost()
     {
         while (true)
@@ -65,6 +66,7 @@ public class BotScript : MonoBehaviour
 
         }
     }
+    */
     //******************************
 
     //********** Restart **********
@@ -80,6 +82,7 @@ public class BotScript : MonoBehaviour
     {
         rb.simulated = false;
         status_controller.isAlive = false;
+        
         whenFailObstacle.Invoke();
         if (!status_controller.isAlive && !player_controller.status_controller.isAlive)
         {

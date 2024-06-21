@@ -26,7 +26,10 @@ public class ObstacleController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision){
-        DestroySelf();
+        if (collision.CompareTag("WallBarrier"))
+        {
+            DestroySelf();
+        }
     }
 
     public void DestroySelf()

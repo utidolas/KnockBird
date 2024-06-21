@@ -76,4 +76,13 @@ public class PlayerController : MonoBehaviour
     {
         whenPassObstacle.Invoke();
     }
+
+    public void Falling()
+    {
+        float yPos = transform.position.y;
+        while(yPos > -3.9f)
+        {
+            yPos--;
+        }
+    }
 }
